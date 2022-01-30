@@ -1,0 +1,40 @@
+header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--lightgray);
+  margin-bottom: 30px;
+  padding-bottom: 5px;
+  width: 500px;
+}
+
+.header-element-container {
+  min-width: 60px;
+}
+
+.header-element {
+  color: var(--lightgray);
+  cursor: pointer;
+}
+
+.app-title {
+  font-size: 2.222em;
+  letter-spacing: 3px;
+  cursor: default;
+}
+
+.settings-and-stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 600px) {
+  header {
+    width: 95vw;
+  }
+
+  .app-title {
+  font-size: 1.9em;
+}
+}

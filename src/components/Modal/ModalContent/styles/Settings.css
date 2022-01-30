@@ -1,0 +1,33 @@
+.settings > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 60px;
+}
+
+a { color: var(--darkgray) }
+
+.toggle-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 30px;
+  height: 20px;
+  background-color: var(--darkgray);
+  border-radius: 100px;
+  padding: 0 2px;
+  cursor: pointer;
+}
+
+.toggle-container.on { 
+  background-color: var(--toggle-bg);
+  justify-content: flex-end; 
+}
+
+.toggle {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: var(--white);
+  z-index: 99999;
+}

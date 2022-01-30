@@ -1,0 +1,72 @@
+.keyboard-container {
+  display: flex;
+  justify-content: center;
+}
+
+.keyboard {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.keyboard-row {
+  display: flex;
+}
+
+.keyboard-key {
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--lightgray);
+  border: 0;
+  font-size: 1em;
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: var(--text-primary);
+}
+
+.keyboard-key.darken {
+  background-color: var(--darkgray);
+  color: var(--text-secondary);
+}
+
+.keyboard-key.green {
+  background-color: var(--green);
+  color: var(--text-secondary);
+}
+
+.keyboard-key.yellow {
+  background-color: var(--yellow);
+  color: var(--text-secondary);
+}
+
+.keyboard-key-enter {
+  font-size: 0.75em;
+}
+
+.keyboard-key-enter,
+.keyboard-key-backspace {
+  width: 60px;
+}
+
+@media (max-width: 600px) {
+  .keyboard {
+    font-size: 0.9em;
+  }
+  .keyboard-key {
+    width: 8vw;
+    height: 50px;
+    margin: 2.75px;
+  }
+
+  .keyboard-key-enter,
+  .keyboard-key-backspace {
+    width: 12vw;
+  }
+}
