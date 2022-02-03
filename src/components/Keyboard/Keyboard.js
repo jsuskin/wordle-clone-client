@@ -1,9 +1,7 @@
-import { useEffect } from "react";
 import "./styles/Keyboard.css";
 
 const Keyboard = ({
   words,
-  word,
   currentGuess,
   setCurrentGuess,
   prevGuesses,
@@ -13,6 +11,16 @@ const Keyboard = ({
   wrongLetters,
   animateBlocks,
 }) => {
+  // document.addEventListener("keyup", ({ key }) => {
+  //   if (
+  //     (currentGuess.length < 5 &&
+  //     (key.length === 1 && key.match(/[A-Za-z]/))) ||
+  //       key.match(/enter|backspace/i)
+  //   ) {
+  //     handleClick(key.toLowerCase());
+  //   }
+  // });
+
   const handleClick = (k) => {
     if (!won) {
       let guess;
@@ -28,6 +36,7 @@ const Keyboard = ({
       } else if (k === "backspace") {
         guess = currentGuess.slice(0, -1);
       } else if (currentGuess.length >= 5) {
+        animateBlocks(prevGuesses.length, "full");
         return;
       } else {
         guess = currentGuess + k;
@@ -36,17 +45,6 @@ const Keyboard = ({
       if ([...prevGuesses, currentGuess].length <= 6) setCurrentGuess(guess);
     }
   };
-
-  useEffect(() => {
-    window.addEventListener("keydown", ({ key }) => {
-      if (
-        (key.length === 1 && key.match(/[A-Za-z]/)) ||
-        key.match(/enter|backspace/i)
-      ) {
-        handleClick(key.toLowerCase());
-      }
-    });
-  }, []);
 
   return (
     <div className='keyboard-container'>

@@ -34,6 +34,47 @@ function App() {
     wrongPlace: [],
   });
 
+  const modalContent = () => {
+    switch (modalType) {
+      case "instructions":
+        return <Instructions />;
+      case "stats":
+        return <Stats reset={reset} />;
+      case "settings":
+        return <Settings settings={settings} setSettings={setSettings} />;
+      default:
+        break;
+    }
+  };
+
+  const reset = () => {
+    setWord(words[Math.floor(Math.random() * words.length)]);
+    setCurrentGuess("");
+    setPrevGuesses([]);
+    setWon(false);
+    setShowModal(false);
+    setCorrectLetters({ rightPlace: [], wrongPlace: [] });
+  };
+
+  const animateBlocks = (rowNum, colNum, type = "shake") => {
+    setAnimateBlock({
+      ...animateBlock,
+      animate: true,
+      rowNum: rowNum,
+      colNum: colNum,
+      animationType: type,
+    });
+    setTimeout(() => {
+      setAnimateBlock({
+        ...animateBlock,
+        animate: false,
+        rowNum: -1,
+        colNum: -1,
+        animationType: "shake",
+      });
+    }, 500);
+  };
+
   useEffect(() => {
     const storedTheme =
       localStorage.getItem("theme") ||
@@ -116,7 +157,7 @@ function App() {
           if (word[idx] === letter) {
             if (!correctLetters.rightPlace.includes(letter))
               rightPlace = [...rightPlace, letter];
-              wrongPlace = wrongPlace.filter(ltr => ltr !== letter);
+            wrongPlace = wrongPlace.filter((ltr) => ltr !== letter);
           } else {
             if (
               !correctLetters.rightPlace.includes(letter) &&
@@ -132,48 +173,8 @@ function App() {
         wrongPlace: [...wrongPlace],
       });
     }
+    // eslint-disable-line react-hooks/exhaustive-deps
   }, [words, prevGuesses, settings.darkMode, settings.colorBlindMode]);
-
-  const modalContent = () => {
-    switch (modalType) {
-      case "instructions":
-        return <Instructions />;
-      case "stats":
-        return <Stats reset={reset} />;
-      case "settings":
-        return <Settings settings={settings} setSettings={setSettings} />;
-      default:
-        break;
-    }
-  };
-
-  const reset = () => {
-    setWord(words[Math.floor(Math.random() * words.length)]);
-    setCurrentGuess("");
-    setPrevGuesses([]);
-    setWon(false);
-    setShowModal(false);
-    setCorrectLetters({ rightPlace: [], wrongPlace: [] });
-  };
-
-  const animateBlocks = (rowNum, colNum, type = "shake") => {
-    setAnimateBlock({
-      ...animateBlock,
-      animate: true,
-      rowNum: rowNum,
-      colNum: colNum,
-      animationType: type,
-    });
-    setTimeout(() => {
-      setAnimateBlock({
-        ...animateBlock,
-        animate: false,
-        rowNum: -1,
-        colNum: -1,
-        animationType: "shake",
-      });
-    }, 500);
-  };
 
   return (
     <div className='app'>

@@ -36,7 +36,7 @@ const Header = ({ setShowModal, setModalType }) => {
             setShowModal(true);
           }}
         >
-          <img src='https://img.icons8.com/external-those-icons-lineal-those-icons/23/808080/external-bar-chart-charts-infographic-those-icons-lineal-those-icons-1.png' />
+          <img src='https://img.icons8.com/external-those-icons-lineal-those-icons/23/808080/external-bar-chart-charts-infographic-those-icons-lineal-those-icons-1.png' alt='stats' />
         </div>
         <div
           className='settings-icon header-element'
@@ -45,7 +45,7 @@ const Header = ({ setShowModal, setModalType }) => {
             setShowModal(true);
           }}
         >
-          <img src='https://img.icons8.com/material/23/808080/settings--v5.png' />
+          <img src='https://img.icons8.com/material/23/808080/settings--v5.png' alt='settings' />
         </div>
       </div>
     </header>
